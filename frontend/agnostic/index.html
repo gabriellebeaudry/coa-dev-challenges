@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <title>Gabrielle's Frontend Test</title>
+    <link rel='stylesheet' href='index.css'/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   </head>
+
+  
   <body>
-    <!-- Delete the line below -->
-    <h2>Hello! 
-      Let's explore dockless transport data. 
-
-    </h2>
-    <!-- Do something with the data. Be creative 🎉 -->
-
-    <div class = "sum_stats" id = 'ss_div'> 
-      <h1 id = "totalmiles"> 
-        The total amount of miles travelled is: 
-      </h1>
-
-      <p> </p>
-
-
+    <div class="header"> 
+        <h1>Hello!  </h1>
     </div>
-       
+  
+    <div class="row">
+      <div class="column"> 
+        <h2> Parameters</h2>
+        <p id="dataparam_dates"> Search by date (YYYY-MM-DD): </p> 
+        <input type="date" id="input_startDate" value="2000-00-00">
+        <input type="date" id="input_endDate" value="2000-00-00">
+        <button onclick="filterDate()"> Get Data </button> 
+      
+      </div>
 
+      <div class="column">
+          <h2>  </h2>
+          <div id="mapid" style="width: 600px; height: 400px;"></div>
+          
+      </div>
 
-  </body>
+         <div class="column">
+            <h2> </h2>
+            <p>plot.ly data or a map </p>
+          </div> 
+
+      </div>
+  </body>  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script type="text/javascript" src="index.js"></script>
 </html>

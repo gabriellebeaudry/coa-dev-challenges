@@ -1,1 +1,48 @@
 /* TODO: Add some styles. Use a preprocessor like Sass if it helps. */
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #E9E4DD; 
+  font-family: 'Quicksand', sans-serif; 
+}
+
+h1 { 
+    font-style: bold; 
+}
+
+.header {
+  background-color: #FFFFFF;
+  padding: 20px;
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 33.33%; /*consider two columns*/
+  padding: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+#mapid { 
+    height: 180px; 
+}
+
+
+
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gabrielle's Frontend Test</title>
+    <title >Hire Me! </title>
     <link rel='stylesheet' href='index.css'/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,29 +18,45 @@
   <body>
     <div class="header"> 
         <h1>Hello!  </h1>
-    </div>
+        
+    </div> 
   
     <div class="row">
+        
       <div class="column"> 
         <h2> Parameters</h2>
         <p id="dataparam_dates"> Search by date (YYYY-MM-DD): </p> 
         <input type="date" id="input_startDate" value="2000-00-00">
-        <input type="date" id="input_endDate" value="2000-00-00">
-        <button onclick="filterDate()"> Get Data </button> 
+        <input type="date" id="input_endDate" value="2000-00-00"> 
+
+        
+        <p>Mode of Transport:</p>
+        <input type="radio" name="mode_transport" value="bike"> Bike <br>
+        <input type="radio" name="mode_transport" value="scooter"> Scooter <br>
+        <input type="radio" name="mode_transport" value="both"> Both <br>  
+
+        <p></p>
+        <button onclick="filterData()""> Get Data </button> 
+
+
+        
       
       </div>
 
       <div class="column">
-          <h2>  </h2>
-          <div id="mapid" style="width: 600px; height: 400px;"></div>
-          
+          <h2> ---  </h2>
+          <p id= "summarystats"> For your filters... </p>
+          <p id= "summarystats_trips"> ___ Total Trips </p>
+          <p id= "summarystats_miles"> ___ Total Miles Travelled </p>
+          <p id= "summarystats_units"> ___ Unique Units </p>
+
       </div>
 
          <div class="column">
             <h2> </h2>
-            <p>plot.ly data or a map </p>
+            <div id="mapid" ></div>
           </div> 
-
+          
       </div>
   </body>  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>

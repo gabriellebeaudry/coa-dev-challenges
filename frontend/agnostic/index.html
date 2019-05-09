@@ -17,38 +17,33 @@
   
   <body>
     <div class="header"> 
-        <h1>Hello!  </h1>
-        
+        <h1> Dockless transit in Austin </h1>
+        <div id="mapid" ></div>
     </div> 
   
     <div class="row">
-        
       <div class="column"> 
-        <h2> Parameters</h2>
-        <p id="dataparam_dates"> Search by date (YYYY-MM-DD): </p> 
+        <h2> Filter the Data </h2>
+        <p id="dataparam_dates"> By date: </p> 
         <input type="date" id="input_startDate" value="2000-00-00">
         <input type="date" id="input_endDate" value="2000-00-00"> 
 
         
-        <p>Mode of Transport:</p>
+        <p>By mode of transport:</p>
         <input type="radio" name="mode_transport" value="bike"> Bike <br>
         <input type="radio" name="mode_transport" value="scooter"> Scooter <br>
         <input type="radio" name="mode_transport" value="both"> Both <br>  
-
         <p></p>
-        <button onclick="filterData()""> Get Data </button> 
-
-
-        
-      
+        <button onclick="filterData()""> Apply Filters </button>
+        <button onclick="clearFilters()"> Clear Filters </button>
       </div>
 
       <div class="column">
-          <h2> ---  </h2>
-          <p id= "summarystats"> For your filters... </p>
-          <p id= "summarystats_trips"> ___ Total Trips </p>
-          <p id= "summarystats_miles"> ___ Total Miles Travelled </p>
-          <p id= "summarystats_units"> ___ Unique Units </p>
+          <h2>  </h2>
+          <p id="summary_stats"><span id="first_date"></span><span id="second_date"></span></p>
+          <h1 id= "summarystats_trips">  </h1>
+          <h1 id= "summarystats_miles">  </h1>
+          <h1 id= "summarystats_units"> </h1>
 
       </div>
 

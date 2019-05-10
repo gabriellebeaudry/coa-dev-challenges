@@ -1,4 +1,5 @@
-// keep json data in array 'mydata' 
+
+// ajax call to api for data 
 var mydata; 
 $.ajax({
   url: "https://data.austintexas.gov/resource/7d8e-dm7r.json",
@@ -12,8 +13,6 @@ $.ajax({
 });
 
 
-
-
 //declaring variables in global scope for use in functions 
 var filtered_mydata = [];
 var scooter_mydata = []; 
@@ -23,18 +22,18 @@ var unique_units = new Set();
 var dict_summarystats = {}; 
 var startDate = ""; 
 var endDate = ""; 
-var combined_summarystats; // useful in global scope to use for the barchart 'Combined Total' data 
+var combined_summarystats; // useful for the barchart 'Combined Total' data 
 
 
 // filtering on date range 
  function filterData() {
   filtered_mydata = []; 
-   //startDate = new Date(document.getElementById("input_startDate").value.replace(/-/g, '\/').replace(/T.+/, '')); // replacing the - with / fixes the time zone problem 
-   //endDate = new Date(document.getElementById("input_endDate").value.replace(/-/g, '\/').replace(/T.+/, ''));
+   startDate = new Date(document.getElementById("input_startDate").value.replace(/-/g, '\/').replace(/T.+/, '')); // replacing the - with / fixes the time zone problem 
+   endDate = new Date(document.getElementById("input_endDate").value.replace(/-/g, '\/').replace(/T.+/, ''));
    startDate = new Date("2019/05/01"); 
    endDate = new Date("2019/05/05"); 
    if (startDate > endDate) { 
-     alert("Date range not valid"); // not the best asynchronous practice but it will work for now 
+     alert("Date range not valid"); // not the best asynchronous practice but it will work  
    }
    for (let i = 0; i <mydata.length; i++) {
     if ((mydata[i].start_time != undefined)){  
@@ -49,9 +48,12 @@ var combined_summarystats; // useful in global scope to use for the barchart 'Co
   makeBarChart(); // use filtered data to make bar chart 
 }
 
- var combined_summarystats; 
+ 
+ 
  // update the page with statistics based on the data filtered by date  
 function updateSummaryStatistics() { 
+  // $('#column_one')
+  // $('#column_two')
   $('#first_date').text("Between " +startDate.toString().substring(0, 15)+ " and ");
   $('#second_date').text(endDate.toString().substring(0,15) + " there were ");  
   combined_summarystats = getSummaryStats(filtered_mydata); // data will be a dictionary of summary statistics. Keys of the dict will be the variables: total miles, total trips, and unique units 
@@ -137,23 +139,22 @@ function makeBarChart(){
   var data = [bar_bike, bar_scoot, bar_both]
   var layout = {
     barmode: 'group',
-    //paper_bgcolor= '#E9E4DD',
-    //plot_bgcolor='#E9E4DD'
+    //paper_bgcolor= '#E9E4DD', 
+    //plot_bgcolor='#E9E4DD' 
   }
-  Plotly.newPlot('plotly_div', data, layout, {showSendToCloud:true});
+  Plotly.newPlot('plotly_div', data, layout,{responsive: true});
 } 
  
 
-// CUT FOR TIME 
 
+////////////////////////////////////////////////////
 
 function clearFilters() {  
   // function to clear the filters, reset the page nicely 
-  
 
 }
 
-// create map for plotting mobility data  (pI didn't end up mapping anything, but I think the map looks nice so I left it in anyways)
+// create map for plotting mobility data  (I didn't end up mapping the actual data, but I think the map kinda looks nice so I left it in anyways)
 var map_austin = L.map('mapid').setView([30.2672, -97.7431], 13);
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

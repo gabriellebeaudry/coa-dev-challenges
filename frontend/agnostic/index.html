@@ -11,7 +11,8 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
   crossorigin=""></script>
-  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
@@ -44,16 +45,16 @@
     
     <div class="row">
       <div class="column">
-          <h2> Data for Bikes and Scooters Combined: </p>
+          <h2 id="#column_one"> Data for Bikes and Scooters Combined: </p>
           <p class="summary_stats"><span id="first_date"></span><span id="second_date"></span></p>
-          <h1 class="summary_stats" id= "summarystats_trips"> </h1>
-          <h1 class="summary_stats" id= "summarystats_miles"> </h1>
-          <h1 class="summary_stats" id= "summarystats_units"> </h1>
+          <p class="summary_stats" id= "summarystats_trips"> </p>
+          <p class="summary_stats" id= "summarystats_miles"> </p>
+          <p class="summary_stats" id= "summarystats_units"> </p>
 
       </div>
 
          <div class="column">
-            <h2> Comparing Bikes and Scooters: </p>
+            <h2 id="#column_two"> Comparing Bikes and Scooters: </p>
             <div id="plotly_div"> </div>
             <!-- <p> Click <a href="https://data.austintexas.gov/Transportation-and-Mobility/Dockless-Vehicle-Trips/7d8e-dm7r">here</a> for data documentation. </p> -->
             <p id = 'datasource'></p>

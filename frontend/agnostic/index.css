@@ -8,11 +8,13 @@
 body {
   margin: 0;
   background-color: #E9E4DD; 
-  font-family: 'Quicksand', sans-serif; 
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 { 
-    font-style: bold; 
+    font-weight:black;
+    
+
 }
 
 .header {
@@ -30,22 +32,20 @@ h1 {
 
 .summary_stats { 
   font-size: 17px; 
+  font-weight: lighter; 
 }
 /* #summarystats_miles { 
   font-size: 25px;
   font-weight: bold; 
 }
 #summarystats_trips { 
-
- 
 }
-
 #summarystats_units { 
-
 } */
 label { 
   font-size: 17px;
-  font-weight: bold; 
+  font-weight: lighter; 
+
 }
 
 input { 
@@ -76,7 +76,6 @@ input {
 #mode_transport { 
   font-style: bold; 
   font-size: 13px;
-
 }
 
 button {
@@ -86,10 +85,10 @@ button {
   padding: 2px 20px;
   text-align: center;
   text-decoration: none;
-  font-family: 'Quicksand', sans-serif; 
+  font-family: 'Roboto', sans-serif; 
   display: inline-block;
   font-size: 17px;
-  font-weight: bold; 
+  font-weight: lighter; 
   margin: 4px 10px;
   cursor: pointer;
 }

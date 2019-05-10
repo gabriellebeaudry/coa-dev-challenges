@@ -20,10 +20,41 @@ h1 {
   padding: 20px;
   text-align: center;
 }
+#container { 
+  text-align: center; 
+}
+#filter { 
+  background-color: #E9E4DD; 
+  display: inline-block; 
+}
+
+.summary_stats { 
+  font-size: 17px; 
+}
+/* #summarystats_miles { 
+  font-size: 25px;
+  font-weight: bold; 
+}
+#summarystats_trips { 
+
+ 
+}
+
+#summarystats_units { 
+
+} */
+label { 
+  font-size: 17px;
+  font-weight: bold; 
+}
+
+input { 
+  border: none; 
+}
 
 .column {
-  float: left;
-  width: 33.33%; /*consider two columns*/
+  float: right;
+  width: 50%; 
   padding: 15px;
 }
 
@@ -39,7 +70,26 @@ h1 {
   }
 }
 
-#mapid { height: 300px; }
+#mapid { height: 200px; }
 
 
+#mode_transport { 
+  font-style: bold; 
+  font-size: 13px;
 
+}
+
+button {
+  background-color: grey; 
+  border: none;
+  color: black;
+  padding: 2px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif; 
+  display: inline-block;
+  font-size: 17px;
+  font-weight: bold; 
+  margin: 4px 10px;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title >Hire Me! </title>
+    <title > Gabrielle's Frontend Code Challenge </title>
     <link rel='stylesheet' href='index.css'/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,47 +12,57 @@
   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
   crossorigin=""></script>
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
   
   <body>
     <div class="header"> 
-        <h1> Dockless transit in Austin </h1>
+        <h1> Dockless Transit in Austin, Texas </h1>
         <div id="mapid" ></div>
     </div> 
-  
+
+    <div id = "container">
+        <div id="filter">
+            <h2> Filter the Data by Date: </p> 
+            <label for="input_startDate">Start date:</label>
+            <input type="date" id="input_startDate" value="2000-00-00">
+            <label for="input_endDate">End date:</label>
+            <input type="date" id="input_endDate" value="2000-00-00"> 
+            
+          </div>
+          <!-- <div id=#filter> 
+            <p>
+            <label for="radio"> By mode of transport: </label>
+              <input type="radio" name="mode_transport" value="bike"> Bike 
+              <input type="radio" name="mode_transport" value="scooter"> Scooter
+              <input type="radio" name="mode_transport" value="both"> Both 
+              </p>
+          </div> -->
+          <button onclick="filterData();"> Get Data </button>
+    </div>
+    
     <div class="row">
-      <div class="column"> 
-        <h2> Filter the Data </h2>
-        <p id="dataparam_dates"> By date: </p> 
-        <input type="date" id="input_startDate" value="2000-00-00">
-        <input type="date" id="input_endDate" value="2000-00-00"> 
-
-        
-        <p>By mode of transport:</p>
-        <input type="radio" name="mode_transport" value="bike"> Bike <br>
-        <input type="radio" name="mode_transport" value="scooter"> Scooter <br>
-        <input type="radio" name="mode_transport" value="both"> Both <br>  
-        <p></p>
-        <button onclick="filterData()""> Apply Filters </button>
-        <button onclick="clearFilters()"> Clear Filters </button>
-      </div>
-
       <div class="column">
-          <h2>  </h2>
-          <p id="summary_stats"><span id="first_date"></span><span id="second_date"></span></p>
-          <h1 id= "summarystats_trips">  </h1>
-          <h1 id= "summarystats_miles">  </h1>
-          <h1 id= "summarystats_units"> </h1>
+          <h2> Data for Bikes and Scooters Combined: </p>
+          <p class="summary_stats"><span id="first_date"></span><span id="second_date"></span></p>
+          <h1 class="summary_stats" id= "summarystats_trips"> </h1>
+          <h1 class="summary_stats" id= "summarystats_miles"> </h1>
+          <h1 class="summary_stats" id= "summarystats_units"> </h1>
 
       </div>
 
          <div class="column">
-            <h2> </h2>
-            <div id="mapid" ></div>
+            <h2> Comparing Bikes and Scooters: </p>
+            <div id="plotly_div"> </div>
+            <!-- <p> Click <a href="https://data.austintexas.gov/Transportation-and-Mobility/Dockless-Vehicle-Trips/7d8e-dm7r">here</a> for data documentation. </p> -->
+            <p id = 'datasource'></p>
           </div> 
+          <svg></svg>
           
       </div>
+      
+      <script src="https://d3js.org/d3.v4.min.js"></script>
   </body>  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script type="text/javascript" src="index.js"></script>

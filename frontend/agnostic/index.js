@@ -13,12 +13,10 @@ $.ajax({
 });
 
 
-//declaring variables in global scope for use in functions 
+//declaring variables in global scope 
 var filtered_mydata = [];
 var scooter_mydata = []; 
 var bike_mydata = []; 
-var unique_trips = new Set(); 
-var unique_units = new Set(); 
 var dict_summarystats = {}; 
 var startDate = ""; 
 var endDate = ""; 
@@ -30,10 +28,10 @@ var combined_summarystats; // useful for the barchart 'Combined Total' data
   filtered_mydata = []; 
    startDate = new Date(document.getElementById("input_startDate").value.replace(/-/g, '\/').replace(/T.+/, '')); // replacing the - with / fixes the time zone problem 
    endDate = new Date(document.getElementById("input_endDate").value.replace(/-/g, '\/').replace(/T.+/, ''));
-   startDate = new Date("2019/05/01"); 
-   endDate = new Date("2019/05/05"); 
+   //startDate = new Date("2019/05/01"); 
+   //endDate = new Date("2019/05/05"); for quick testing 
    if (startDate > endDate) { 
-     alert("Date range not valid"); // not the best asynchronous practice but it will work  
+     alert("Date range not valid"); // not the best asynchronous practice but it will work for this purpose 
    }
    for (let i = 0; i <mydata.length; i++) {
     if ((mydata[i].start_time != undefined)){  
@@ -52,12 +50,11 @@ var combined_summarystats; // useful for the barchart 'Combined Total' data
  
  // update the page with statistics based on the data filtered by date  
 function updateSummaryStatistics() { 
-  // $('#column_one')
-  // $('#column_two')
+  //document.getElementById('column_one').innerHTML = 'Data for Bikes and Scooters Combined: '; 
   $('#first_date').text("Between " +startDate.toString().substring(0, 15)+ " and ");
   $('#second_date').text(endDate.toString().substring(0,15) + " there were ");  
-  combined_summarystats = getSummaryStats(filtered_mydata); // data will be a dictionary of summary statistics. Keys of the dict will be the variables: total miles, total trips, and unique units 
-  //document.getElementById("summarystats_miles").innerHTML = <p id="bold_numbers"> combined_summarystats.tmiles </p> + " total miles travelled"; 
+  combined_summarystats = getSummaryStats(filtered_mydata); // this variable will be a dictionary of summary statistics. Keys of the dict will be the variables: 'total miles', 'total trips', and 'unique units' 
+  //document.getElementById("summarystats_miles").innerHTML = "<span style='font-size:40px'> combined_summarystats.tmiles </span>" + " total miles travelled"; 
   document.getElementById("summarystats_miles").innerHTML = combined_summarystats.tmiles + " total miles travelled"; 
   document.getElementById("summarystats_trips").innerHTML = combined_summarystats.ttrips + " total trips made with dockless vehicles";
   document.getElementById("summarystats_units").innerHTML = combined_summarystats.uunits + " bikes and scooters utilized";
@@ -65,11 +62,10 @@ function updateSummaryStatistics() {
 }
 
 function getSummaryStats(data_passIn) {
-  // this function takes in filtered data, and returns a dictionary mapping derived values to their variable 
-  //(such as total miles for the given filtered data)
+  // this function takes in filtered data, and returns a dictionary mapping derived values to their variable (such as total miles for the given filtered data)
   let total_meters = 0; 
-  unique_trips = new Set();  
-  unique_units = new Set(); 
+  let unique_trips = new Set();  
+  let unique_units = new Set(); 
   dict_summarystats= {};  
 
   for (let i = 0; i <data_passIn.length; i++) { 
@@ -94,6 +90,8 @@ function getSummaryStats(data_passIn) {
   return dict_summarystats; 
 } 
 
+
+
 function filterByMode(data_passIn) { 
   // this function takes in an array and returns a dictionary mapping 'scooter' or 'bike' to it's respective filtered data 
   scooter_mydata = []; 
@@ -109,6 +107,7 @@ function filterByMode(data_passIn) {
   var dict_modearrays = {scooter: scooter_mydata, bike: bike_mydata}; 
   return dict_modearrays;  //return a dictionary of the two datasets 
 }
+
 
 
 function makeBarChart(){
@@ -142,17 +141,14 @@ function makeBarChart(){
     //paper_bgcolor= '#E9E4DD', 
     //plot_bgcolor='#E9E4DD' 
   }
-  Plotly.newPlot('plotly_div', data, layout,{responsive: true});
+  Plotly.newPlot('plotly_div', data, layout,{responsive: true}); 
 } 
- 
-
-
-////////////////////////////////////////////////////
 
 function clearFilters() {  
-  // function to clear the filters, reset the page nicely 
-
+  // reset the page  - not the cleanest way of doing this but easiest for the sake of this page
+  location.reload();
 }
+
 
 // create map for plotting mobility data  (I didn't end up mapping the actual data, but I think the map kinda looks nice so I left it in anyways)
 var map_austin = L.map('mapid').setView([30.2672, -97.7431], 13);
@@ -160,3 +156,10 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map_austin);
 
+///////////////////////////////////////////////////////////////////////////////////////////// 
+
+// some other things I might do if I were to keep working on this: 
+
+// bold the numbers of the summary statistics 
+// add a link to the data source / api documentation 
+// change the column headings to only appear when filter is clicked 

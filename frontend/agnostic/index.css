@@ -82,13 +82,13 @@ button {
   background-color: grey; 
   border: none;
   color: black;
-  padding: 2px 20px;
+  padding: 2px 10px;
   text-align: center;
   text-decoration: none;
   font-family: 'Roboto', sans-serif; 
   display: inline-block;
   font-size: 17px;
   font-weight: lighter; 
-  margin: 4px 10px;
+  margin: 4px 2px;
   cursor: pointer;
 }

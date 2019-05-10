@@ -12,7 +12,6 @@
   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
   crossorigin=""></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
 
@@ -40,12 +39,12 @@
               <input type="radio" name="mode_transport" value="both"> Both 
               </p>
           </div> -->
-          <button onclick="filterData();"> Get Data </button>
+          <button onclick="filterData();"> Get Data </button> <button onclick="clearFilters();"> Clear Filter </button>
     </div>
     
-    <div class="row">
+    <div class="row" id="#toclear">
       <div class="column">
-          <h2 id="#column_one"> Data for Bikes and Scooters Combined: </p>
+          <h2 id="#column_one">Data for Bikes and Scooters Combined:  </p>
           <p class="summary_stats"><span id="first_date"></span><span id="second_date"></span></p>
           <p class="summary_stats" id= "summarystats_trips"> </p>
           <p class="summary_stats" id= "summarystats_miles"> </p>
@@ -56,14 +55,10 @@
          <div class="column">
             <h2 id="#column_two"> Comparing Bikes and Scooters: </p>
             <div id="plotly_div"> </div>
-            <!-- <p> Click <a href="https://data.austintexas.gov/Transportation-and-Mobility/Dockless-Vehicle-Trips/7d8e-dm7r">here</a> for data documentation. </p> -->
             <p id = 'datasource'></p>
           </div> 
           <svg></svg>
-          
       </div>
-      
-      <script src="https://d3js.org/d3.v4.min.js"></script>
   </body>  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script type="text/javascript" src="index.js"></script>
